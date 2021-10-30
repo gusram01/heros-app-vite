@@ -5,6 +5,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import { Container } from '@chakra-ui/react';
 
 import NavBar, { RouteItem } from '../navbar/NavBar';
 
@@ -16,24 +17,27 @@ const HerosRouter = () => {
       id: nanoid(),
       path: RoutesNames.rootHome,
       label: 'Home',
+      title: 'Home',
     },
     {
       id: nanoid(),
       path: RoutesNames.rootMarvel,
       label: 'Marvel',
+      title: 'Marvel Heros',
     },
     {
       id: nanoid(),
       path: RoutesNames.rootDc,
       label: 'DC',
+      title: 'DC Heros',
     },
   ];
 
   return (
     <Router>
-      <NavBar routeItems={routes} />
+      <Container maxW="container.lg" bg="gray.800" color="orange.100">
+        <NavBar routeItems={routes} />
 
-      <div>
         <Switch>
           <Route exact path={`/${RoutesNames.rootHome}`}>
             <h1>home</h1>
@@ -49,7 +53,7 @@ const HerosRouter = () => {
 
           <Redirect to={`/${RoutesNames.rootHome}`} />
         </Switch>
-      </div>
+      </Container>
     </Router>
   );
 };
