@@ -16,7 +16,8 @@ const NavBar = ({ routeItems }: { routeItems: RouteItem[] }) => {
 
   useEffect(() => {
     const locationTitle = routeItems.find(
-      (routeItem) => location.pathname === `/${routeItem.path}`
+      (routeItem) =>
+        location.pathname === `/${RoutesNames.rootDashboard}/${routeItem.path}`
     )?.title;
     setTitle(locationTitle || 'Home');
   }, [location.pathname]);
