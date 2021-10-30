@@ -1,7 +1,10 @@
 enum RoutesNames {
-  rootHome = 'home',
-  rootMarvel = 'marvel',
-  rootDc = 'dc',
+  rootAuth = 'auth',
+  rootDashboard = 'dashboard',
+
+  dashboardHome = 'home',
+  dashboardMarvel = 'marvel',
+  dashboardDc = 'dc',
 }
 
 export default RoutesNames;

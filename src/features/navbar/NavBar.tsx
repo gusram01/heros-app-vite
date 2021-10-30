@@ -1,6 +1,7 @@
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Flex, Heading, Link, Box, Spacer } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import { RoutesNames } from '../router';
 
 export interface RouteItem {
   id: string;
@@ -21,7 +22,7 @@ const NavBar = ({ routeItems }: { routeItems: RouteItem[] }) => {
   }, [location.pathname]);
 
   return (
-    <Flex align="center" p="4">
+    <Flex align="center" minH="24">
       <Box p="2">
         <Heading>{title}</Heading>
       </Box>
@@ -33,6 +34,12 @@ const NavBar = ({ routeItems }: { routeItems: RouteItem[] }) => {
           <Box p="2">{routeItem.label}</Box>
         </Link>
       ))}
+
+      <Box p="2">
+        <Link as={RouterLink} to={`/${RoutesNames.rootAuth}`}>
+          Logout
+        </Link>
+      </Box>
     </Flex>
   );
 };
