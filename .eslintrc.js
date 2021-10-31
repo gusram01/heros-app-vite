@@ -36,5 +36,6 @@ module.exports = {
       { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
     ],
     'no-unused-vars': 'warn',
+    'import/prefer-default-export': 'off',
   },
 };
