@@ -13,7 +13,7 @@ const Hero: FC<IHero> = ({
 }) => {
   return (
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-      <Image src={`/public/assets/${id}.jpg`} alt={`${id} image`} />
+      <Image src={`/assets/${id}.jpg`} alt={`${id} image`} />
 
       <Box p="6">
         <Box display="flex" alignItems="baseline">
