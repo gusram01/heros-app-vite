@@ -1,6 +1,6 @@
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Flex, Heading, Link, Box, Spacer } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { RoutesNames } from '../router';
 
 export interface RouteItem {
@@ -10,7 +10,7 @@ export interface RouteItem {
   title: string;
 }
 
-const NavBar = ({ routeItems }: { routeItems: RouteItem[] }) => {
+const NavBar = memo(({ routeItems }: { routeItems: RouteItem[] }) => {
   const location = useLocation();
   const [title, setTitle] = useState('/');
 
@@ -43,6 +43,6 @@ const NavBar = ({ routeItems }: { routeItems: RouteItem[] }) => {
       </Box>
     </Flex>
   );
-};
+});
 
 export default NavBar;
