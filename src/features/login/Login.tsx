@@ -1,13 +1,21 @@
-import { Link, Container } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { FC } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+import { Container, Button, Center } from '@chakra-ui/react';
+
 import { RoutesNames } from '../router';
 
-const Login = () => {
+const Login: FC<RouteComponentProps> = ({ history }) => {
+  const goToDashboard = () => {
+    history.push(RoutesNames.rootDashboard);
+  };
+
   return (
-    <Container minH="100vh">
-      <Link as={RouterLink} to={`/${RoutesNames.rootDashboard}`} p="4">
-        Login
-      </Link>
+    <Container minW="100%" minH="100vh">
+      <Center minH="100vh">
+        <Button variant="outline" onClick={goToDashboard}>
+          Login
+        </Button>
+      </Center>
     </Container>
   );
 };
