@@ -3,10 +3,12 @@ import { Switch, Route, Redirect, RouteComponentProps } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { Container } from '@chakra-ui/react';
 
-import NavBar, { RouteItem } from '../navbar/NavBar';
+import Home from 'features/home';
+import DCScreen from 'features/dc-screen/DCScreen';
+import MarvelScreen from 'features/marvel-screen/MarvelScreen';
+import NavBar, { RouteItem } from 'features/navbar/NavBar';
 
 import { RoutesNames } from '.';
-import Home from '../home';
 
 const HerosRouter: FC<RouteComponentProps> = ({ match }) => {
   const routes: RouteItem[] = [
@@ -31,21 +33,27 @@ const HerosRouter: FC<RouteComponentProps> = ({ match }) => {
   ];
 
   return (
-    <Container maxW="container.lg" bg="gray.800" color="orange.100">
+    <Container maxW="container.lg">
       <NavBar routeItems={routes} />
       <div>
         <Switch>
-          <Route exact path={`${match.path}/${RoutesNames.dashboardHome}`}>
-            <Home />
-          </Route>
+          <Route
+            exact
+            path={`${match.path}/${RoutesNames.dashboardHome}`}
+            component={Home}
+          />
 
-          <Route exact path={`${match.path}/${RoutesNames.dashboardMarvel}`}>
-            <h1>Marvel</h1>
-          </Route>
+          <Route
+            exact
+            path={`${match.path}/${RoutesNames.dashboardMarvel}`}
+            component={MarvelScreen}
+          />
 
-          <Route exact path={`${match.path}/${RoutesNames.dashboardDc}`}>
-            <h1>DC</h1>
-          </Route>
+          <Route
+            exact
+            path={`${match.path}/${RoutesNames.dashboardDc}`}
+            component={DCScreen}
+          />
 
           <Redirect to={`${match.path}/${RoutesNames.dashboardHome}`} />
         </Switch>
