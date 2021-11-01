@@ -1,63 +1,40 @@
-import { FC } from 'react';
-import { Switch, Route, Redirect, RouteComponentProps } from 'react-router-dom';
-import { nanoid } from 'nanoid';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from '@chakra-ui/react';
 
 import Home from 'features/home';
-import DCScreen from 'features/dc-screen/DCScreen';
-import MarvelScreen from 'features/marvel-screen/MarvelScreen';
-import NavBar, { RouteItem } from 'features/navbar/NavBar';
+import HeroDetail from 'features/hero-detail/HeroDetail';
+import NavBar from 'features/navbar/NavBar';
+import Heros from 'features/shared/heros/Heros';
 
 import { RoutesNames } from '.';
 
-const HerosRouter: FC<RouteComponentProps> = ({ match }) => {
-  const routes: RouteItem[] = [
-    {
-      id: nanoid(),
-      path: RoutesNames.dashboardHome,
-      label: 'Home',
-      title: 'Home',
-    },
-    {
-      id: nanoid(),
-      path: RoutesNames.dashboardMarvel,
-      label: 'Marvel',
-      title: 'Marvel Heros',
-    },
-    {
-      id: nanoid(),
-      path: RoutesNames.dashboardDc,
-      label: 'DC',
-      title: 'DC Heros',
-    },
-  ];
-
+const HerosRouter = () => {
   return (
     <Container maxW="container.lg">
-      <NavBar routeItems={routes} />
-      <div>
-        <Switch>
-          <Route
-            exact
-            path={`${match.path}/${RoutesNames.dashboardHome}`}
-            component={Home}
-          />
+      <NavBar />
+      <Switch>
+        <Route
+          exact
+          path={`/${RoutesNames.rootDashboard}/${RoutesNames.dashboardHome}`}
+          component={Home}
+        />
 
-          <Route
-            exact
-            path={`${match.path}/${RoutesNames.dashboardMarvel}`}
-            component={MarvelScreen}
-          />
+        <Route
+          exact
+          path={`/${RoutesNames.rootDashboard}/${RoutesNames.dashboardHeros}/:publisher`}
+          component={Heros}
+        />
 
-          <Route
-            exact
-            path={`${match.path}/${RoutesNames.dashboardDc}`}
-            component={DCScreen}
-          />
+        <Route
+          exact
+          path={`/${RoutesNames.rootDashboard}/${RoutesNames.dashboardHero}/:heroId`}
+          component={HeroDetail}
+        />
 
-          <Redirect to={`${match.path}/${RoutesNames.dashboardHome}`} />
-        </Switch>
-      </div>
+        <Redirect
+          to={`/${RoutesNames.rootDashboard}/${RoutesNames.dashboardHome}`}
+        />
+      </Switch>
     </Container>
   );
 };

@@ -1,23 +1,28 @@
-import { FC } from 'react';
-
+import { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 import { Wrap, WrapItem } from '@chakra-ui/react';
 
 import { PublisherEnum } from 'core/models/Publisher';
 import { getHerosByPublisher } from 'core/services';
-import Hero from 'features/shared/hero/Hero';
+import HeroItem from 'features/shared/hero/HeroItem';
 
-interface Props {
-  publisher: PublisherEnum;
+interface PublisherProps {
+  publisher: 'dc' | 'marvel';
 }
 
-const Heros: FC<Props> = ({ publisher }) => {
-  const filteredHeros = getHerosByPublisher(publisher);
+const Heros = () => {
+  const { publisher } = useParams<PublisherProps>();
+
+  const filteredHeros = useMemo(
+    () => getHerosByPublisher(PublisherEnum[publisher]),
+    [publisher]
+  );
 
   return (
-    <Wrap>
+    <Wrap justify="center" spacing={6} align="stretch">
       {filteredHeros.map((hero) => (
         <WrapItem key={hero.id}>
-          <Hero
+          <HeroItem
             id={hero.id}
             superhero={hero.superhero}
             alter_ego={hero.alter_ego}
