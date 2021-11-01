@@ -1,6 +1,14 @@
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { Flex, Heading, Link, Box, Spacer } from '@chakra-ui/react';
-import { memo, useEffect, useState } from 'react';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
+import {
+  Flex,
+  Heading,
+  Link,
+  Box,
+  Spacer,
+  Image,
+  Button,
+} from '@chakra-ui/react';
+import { memo } from 'react';
 import { RoutesNames } from '../router';
 
 export interface RouteItem {
@@ -10,36 +18,50 @@ export interface RouteItem {
   title: string;
 }
 
-const NavBar = memo(({ routeItems }: { routeItems: RouteItem[] }) => {
-  const location = useLocation();
-  const [title, setTitle] = useState('/');
+const NavBar = memo(() => {
+  const history = useHistory();
 
-  useEffect(() => {
-    const locationTitle = routeItems.find(
-      (routeItem) =>
-        location.pathname === `/${RoutesNames.rootDashboard}/${routeItem.path}`
-    )?.title;
-    setTitle(locationTitle || 'Home');
-  }, [location.pathname]);
+  const logout = () => history.push(`/${RoutesNames.rootAuth}`);
 
   return (
     <Flex align="center" minH="24">
       <Box p="2">
-        <Heading>{title}</Heading>
+        <Heading>
+          <Image
+            src="/assets/dc-marvel-logo.webp"
+            boxSize={16}
+            borderRadius="full"
+          />
+        </Heading>
       </Box>
 
       <Spacer />
 
-      {routeItems.map((routeItem) => (
-        <Link as={RouterLink} to={routeItem.path} key={routeItem.id}>
-          <Box p="2">{routeItem.label}</Box>
-        </Link>
-      ))}
+      <Link
+        as={RouterLink}
+        to={`/${RoutesNames.rootDashboard}/${RoutesNames.dashboardHome}`}
+      >
+        <Box p="2"> Home </Box>
+      </Link>
+
+      <Link
+        as={RouterLink}
+        to={`/${RoutesNames.rootDashboard}/${RoutesNames.dashboardHeros}/marvel`}
+      >
+        <Box p="2"> Marvel </Box>
+      </Link>
+
+      <Link
+        as={RouterLink}
+        to={`/${RoutesNames.rootDashboard}/${RoutesNames.dashboardHeros}/dc`}
+      >
+        <Box p="2"> DC </Box>
+      </Link>
 
       <Box p="2">
-        <Link as={RouterLink} to={`/${RoutesNames.rootAuth}`}>
+        <Button colorScheme="red" variant="outline" onClick={logout}>
           Logout
-        </Link>
+        </Button>
       </Box>
     </Flex>
   );
