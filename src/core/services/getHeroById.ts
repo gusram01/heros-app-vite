@@ -1,5 +1,5 @@
-import heroes from 'core/data/heroes';
+import heros from 'core/data/heros';
 import { Hero } from 'core/models/Hero';
 
 export const getHeroById = (id: string): Hero | undefined =>
-  heroes.find((hero) => hero.id === id);
+  heros.find((hero) => hero.id === id);

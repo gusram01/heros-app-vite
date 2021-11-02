@@ -2,9 +2,9 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from '@chakra-ui/react';
 
 import Home from 'features/home';
-import HeroDetail from 'features/hero-detail/HeroDetail';
 import NavBar from 'features/navbar/NavBar';
-import Heros from 'features/shared/heros/Heros';
+import HeroDetail from 'features/hero-detail/HeroDetail';
+import HerosListPage from 'features/shared/heros-list-page/HerosListPage';
 
 import { RoutesNames } from '.';
 
@@ -22,7 +22,7 @@ const HerosRouter = () => {
         <Route
           exact
           path={`/${RoutesNames.rootDashboard}/${RoutesNames.dashboardHeros}/:publisher`}
-          component={Heros}
+          component={HerosListPage}
         />
 
         <Route

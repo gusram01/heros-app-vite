@@ -1,26 +1,31 @@
-import { useMemo } from 'react';
-import { useParams } from 'react-router-dom';
-import { Wrap, WrapItem } from '@chakra-ui/react';
+import { FC } from 'react';
+import { Box, Center, Heading, Wrap, WrapItem } from '@chakra-ui/react';
 
-import { PublisherEnum } from 'core/models/Publisher';
-import { getHerosByPublisher } from 'core/services';
-import HeroItem from 'features/shared/hero/HeroItem';
+import { Hero } from 'core/models/Hero';
+import HeroItem from 'features/shared/hero-item/HeroItem';
 
-interface PublisherProps {
-  publisher: 'dc' | 'marvel';
+interface Props {
+  herosList: Hero[];
+  emptyMessage: string | undefined;
 }
 
-const Heros = () => {
-  const { publisher } = useParams<PublisherProps>();
-
-  const filteredHeros = useMemo(
-    () => getHerosByPublisher(PublisherEnum[publisher]),
-    [publisher]
-  );
+const Heros: FC<Props> = ({
+  herosList,
+  emptyMessage = 'There is no heros that match with the search',
+}) => {
+  if (herosList.length < 1) {
+    return (
+      <Center mt={10}>
+        <Box>
+          <Heading textAlign="center">{emptyMessage}</Heading>
+        </Box>
+      </Center>
+    );
+  }
 
   return (
     <Wrap justify="center" spacing={6} align="stretch">
-      {filteredHeros.map((hero) => (
+      {herosList.map((hero) => (
         <WrapItem key={hero.id}>
           <HeroItem
             id={hero.id}
