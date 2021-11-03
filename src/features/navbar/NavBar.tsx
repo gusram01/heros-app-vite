@@ -7,21 +7,21 @@ import {
   Spacer,
   Image,
   Button,
+  Text,
 } from '@chakra-ui/react';
-import { memo } from 'react';
+import { memo, useContext } from 'react';
+import { AuthContext } from 'features/auth/AuthContext';
+import { AuthTypes } from 'features/auth/models/AuthTypes.enum';
 import { RoutesNames } from '../router';
-
-export interface RouteItem {
-  id: string;
-  path: string;
-  label: string;
-  title: string;
-}
 
 const NavBar = memo(() => {
   const history = useHistory();
+  const { state, dispatch } = useContext(AuthContext);
 
-  const logout = () => history.push(`/${RoutesNames.rootAuth}`);
+  const logout = () => {
+    dispatch({ type: AuthTypes.logout });
+    history.push(`/${RoutesNames.rootAuth}`);
+  };
 
   return (
     <Flex align="center" minH="24">
@@ -34,7 +34,9 @@ const NavBar = memo(() => {
           />
         </Heading>
       </Box>
-
+      <Text userSelect="none" color="blue.300">
+        {state.username && `Welcome ${state.username}`}
+      </Text>
       <Spacer />
 
       <Link
