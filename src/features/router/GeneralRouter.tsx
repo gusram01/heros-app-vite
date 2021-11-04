@@ -1,9 +1,9 @@
-import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
-import { Container } from '@chakra-ui/react';
-
-import Login from 'features/login/Login';
-import { AuthContext } from 'features/auth/AuthContext';
 import { useContext } from 'react';
+import { Container } from '@chakra-ui/react';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+
+import { AuthContext } from '../auth/AuthContext';
+import Login from '../login/Login';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { HerosRouter, RoutesNames } from '.';

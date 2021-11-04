@@ -10,8 +10,8 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { memo, useContext } from 'react';
-import { AuthContext } from 'features/auth/AuthContext';
-import { AuthTypes } from 'features/auth/models/AuthTypes.enum';
+import { AuthContext } from '../auth/AuthContext';
+import { AuthTypes } from '../auth/models/AuthTypes.enum';
 import { RoutesNames } from '../router';
 
 const NavBar = memo(() => {

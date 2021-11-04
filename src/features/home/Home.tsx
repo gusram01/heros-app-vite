@@ -3,8 +3,8 @@ import { RouteComponentProps } from 'react-router-dom';
 import { Center, Container } from '@chakra-ui/react';
 import { parse } from 'query-string';
 
-import { getHerosByQuery } from 'core/services';
-import Heros from 'features/shared/heros/Heros';
+import { getHerosByQuery } from '../../core/services';
+import Heros from '../shared/heros/Heros';
 
 import SearchBar from './components/SearchBar';
 

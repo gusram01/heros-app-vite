@@ -37,5 +37,6 @@ module.exports = {
     ],
     'no-unused-vars': 'warn',
     'import/prefer-default-export': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };

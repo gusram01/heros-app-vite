@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { PublisherEnum } from 'core/models/Publisher';
-import { getHerosByPublisher } from 'core/services';
+import { PublisherEnum } from '../../../core/models/Publisher';
+import { getHerosByPublisher } from '../../../core/services';
 
 import Heros from '../heros/Heros';
 

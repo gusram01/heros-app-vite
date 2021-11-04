@@ -11,8 +11,8 @@ import {
 } from '@chakra-ui/react';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 
-import { getHeroById } from 'core/services/getHeroById';
-import { RoutesNames } from 'features/router';
+import { getHeroById } from '../../core/services/getHeroById';
+import { RoutesNames } from '../router';
 
 interface ParamsProps {
   heroId: string;

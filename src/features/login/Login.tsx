@@ -2,9 +2,9 @@ import { FC, useContext } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { Container, Button, Center } from '@chakra-ui/react';
 
-import { AuthContext } from 'features/auth/AuthContext';
-import { RoutesNames } from 'features/router';
-import { AuthTypes } from 'features/auth/models/AuthTypes.enum';
+import { AuthContext } from '../auth/AuthContext';
+import { RoutesNames } from '../router';
+import { AuthTypes } from '../auth/models/AuthTypes.enum';
 
 const Login: FC<RouteComponentProps> = ({ history }) => {
   const { dispatch } = useContext(AuthContext);

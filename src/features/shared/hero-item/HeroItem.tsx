@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Image, Link, Badge, Center } from '@chakra-ui/react';
 
-import { Hero as IHero } from 'core/models/Hero';
-import { RoutesNames } from 'features/router';
+import { Hero as IHero } from '../../../core/models/Hero';
+import { RoutesNames } from '../../router';
 
 const HeroItem: FC<IHero> = ({ id, superhero, alter_ego, publisher }) => {
   return (

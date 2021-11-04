@@ -1,10 +1,10 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from '@chakra-ui/react';
 
-import Home from 'features/home';
-import NavBar from 'features/navbar/NavBar';
-import HeroDetail from 'features/hero-detail/HeroDetail';
-import HerosListPage from 'features/shared/heros-list-page/HerosListPage';
+import Home from '../home';
+import NavBar from '../navbar/NavBar';
+import HeroDetail from '../hero-detail/HeroDetail';
+import HerosListPage from '../shared/heros-list-page/HerosListPage';
 
 import { RoutesNames } from '.';
 

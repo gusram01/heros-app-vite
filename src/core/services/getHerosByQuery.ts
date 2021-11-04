@@ -1,4 +1,4 @@
-import heros from 'core/data/heros';
+import heros from '../data/heros';
 
 const getHerosByQuery = (query: string) => {
   return heros.filter(

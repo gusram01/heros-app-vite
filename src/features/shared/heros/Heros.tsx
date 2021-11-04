@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import { Box, Center, Heading, Wrap, WrapItem } from '@chakra-ui/react';
 
-import { Hero } from 'core/models/Hero';
-import HeroItem from 'features/shared/hero-item/HeroItem';
+import { Hero } from '../../../core/models/Hero';
+import HeroItem from '../hero-item/HeroItem';
 
 interface Props {
   herosList: Hero[];
-  emptyMessage: string | undefined;
+  // eslint-disable-next-line react/require-default-props
+  emptyMessage?: string;
 }
 
 const Heros: FC<Props> = ({

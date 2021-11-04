@@ -1,12 +1,12 @@
 import { AuthState } from './models/AuthState';
 import { AuthTypes } from './models/AuthTypes.enum';
 
-interface Action {
+export interface Action {
   type: AuthTypes;
-  payload?: AuthState;
+  payload?: Partial<AuthState>;
 }
 
-const firstState: AuthState = {
+export const firstState: AuthState = {
   isLogged: false,
 };
 
