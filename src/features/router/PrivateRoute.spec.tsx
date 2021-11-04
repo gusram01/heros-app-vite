@@ -8,10 +8,10 @@ import PrivateRoute from './PrivateRoute';
 import '@testing-library/jest-dom';
 
 describe('Private Route', () => {
-  it('should render', () => {
+  it('should render the component passed into props', () => {
     render(
-      <PrivateRoute isAuthenticated={true} component={() => <h1>Test</h1>} />,
-      //@ts-expect-error
+      <PrivateRoute isAuthenticated component={() => <h1>Test</h1>} />,
+      // @ts-expect-error
       { wrapper: MemoryRouter }
     );
 
