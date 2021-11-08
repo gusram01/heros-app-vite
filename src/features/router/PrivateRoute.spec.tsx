@@ -1,5 +1,5 @@
 import { MemoryRouter } from 'react-router-dom';
-import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 
 import { render } from '../../tests/test-utils';
 
@@ -16,5 +16,15 @@ describe('Private Route', () => {
     );
 
     expect(screen.getByText('Test')).toBeInTheDocument();
+  });
+
+  it('should not render private route component and redirect to login page', () => {
+    render(
+      <PrivateRoute isAuthenticated={false} component={() => <h1>Test</h1>} />,
+      // @ts-expect-error
+      { wrapper: MemoryRouter }
+    );
+
+    expect(screen.queryByText('Test')).not.toBeInTheDocument();
   });
 });

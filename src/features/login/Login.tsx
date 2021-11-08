@@ -17,7 +17,12 @@ const Login: FC<RouteComponentProps> = ({ history }) => {
   return (
     <Container minW="100%" minH="100vh">
       <Center minH="100vh">
-        <Button colorScheme="yellow" variant="outline" onClick={goToDashboard}>
+        <Button
+          colorScheme="yellow"
+          variant="outline"
+          onClick={goToDashboard}
+          role="button"
+        >
           Login
         </Button>
       </Center>
